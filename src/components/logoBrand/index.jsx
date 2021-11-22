@@ -18,19 +18,23 @@ const LogoImage = styled.div`
 const LogoTitle = styled.h2`
   margin: 0;
   font-size: ${({ size }) => (size ? size + "px" : "35px")};
-  color: #fff;
+  color: ${({ color }) => (color ? color : "#fff")};
   font-weight: 700;
   margin-left: 6px;
 `;
 
 function LogoBrand(props) {
-  const { logoSize, textSize } = props;
+  const { logoSize, textSize, color, hideLogo } = props;
   return (
     <BrandLogoContainer>
-      <LogoImage size={logoSize}>
-        <img src={LogoImg} alt="Logo of the company" />
-      </LogoImage>
-      <LogoTitle size={textSize}>FindTheRight</LogoTitle>
+      {!hideLogo && (
+        <LogoImage size={logoSize}>
+          <img src={LogoImg} alt="Logo of the company" />
+        </LogoImage>
+      )}
+      <LogoTitle size={textSize} color={color}>
+        FindTheRight
+      </LogoTitle>
     </BrandLogoContainer>
   );
 }
