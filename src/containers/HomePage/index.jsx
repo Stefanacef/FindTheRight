@@ -34,7 +34,7 @@ const HomePage = () => {
         textSlogan2="For the right Job"
         image={TopBestSpecialistImg}
       >
-        <NavBar></NavBar>
+        <NavBar useTransparent />
       </TopSection>
       <InnerPageContainer>
         <Marginer direction="vertical" margin="2em" />

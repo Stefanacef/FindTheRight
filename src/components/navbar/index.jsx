@@ -11,6 +11,8 @@ const NavBarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 2.1em;
+  background-color: ${({ useTransparent }) =>
+    useTransparent ? "none" : "rgba(5, 126, 39, 0.884)"};
 `;
 const AccessibilityContainer = styled.div`
   height: 100%;
@@ -36,8 +38,9 @@ const Separator = styled.div`
 `;
 
 function NavBar(props) {
+  const { useTransparent } = props;
   return (
-    <NavBarContainer>
+    <NavBarContainer useTransparent={useTransparent}>
       <LogoBrand logoSize={35} textSize={25}></LogoBrand>
       <AccessibilityContainer>
         <AnchorLink>Specialist Portal</AnchorLink>
