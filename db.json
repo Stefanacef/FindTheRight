@@ -2,10 +2,10 @@
   "services": [
     {
       "id": 11,
-      "title": "I will landscape your garden",
-      "thumbnailUrl": "http://localhost:9000/garden.jpg",
-      "rate": 34,
-      "rating": 4,
+      "title": "I will take care of you pats",
+      "thumbnailUrl": "http://localhost:9000/dog.jpg",
+      "rate": 29,
+      "rating": 5,
       "specialist": { "id": 1, "fullName": "Stefana Farcasu" }
     },
     {
