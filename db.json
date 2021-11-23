@@ -1,6 +1,14 @@
 {
   "services": [
     {
+      "id": 11,
+      "title": "I will landscape your garden",
+      "thumbnailUrl": "http://localhost:9000/garden.jpg",
+      "rate": 34,
+      "rating": 4,
+      "specialist": { "id": 1, "fullName": "Stefana Farcasu" }
+    },
+    {
       "id": 1,
       "title": "I will landscape your garden",
       "thumbnailUrl": "http://localhost:9000/garden.jpg",
