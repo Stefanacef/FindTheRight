@@ -5,11 +5,12 @@ import {
 } from "../../components/pageContainer";
 import NavBar from "../navbar";
 import Footer from "../footer";
+
 function CostumerAccessPage() {
   return (
     <PageContainer>
       <NavBar />
-      <InnerPageContainer>boom</InnerPageContainer>
+      <InnerPageContainer>hii</InnerPageContainer>
       <Footer />
     </PageContainer>
   );

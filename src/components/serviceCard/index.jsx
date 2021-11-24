@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from "styled-components";
 import { Marginer } from "../marginer";
@@ -6,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const CardContainer = styled.div`
- 
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -14,7 +12,7 @@ const CardContainer = styled.div`
   min-height: 250px;
   background-color: #fff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-  margin-left: 4.5em;
+  margin-left: 4em;
   margin-bottom: 1.3em;
 `;
 
@@ -87,7 +85,7 @@ const StartingAtText = styled.h6`
   font-weight: 400;
 `;
 
- function ServiceCard(props) {
+function ServiceCard(props) {
   const { thumbnailUrl, specialist, id, title, rate, rating } = props;
 
   return (
@@ -115,4 +113,4 @@ const StartingAtText = styled.h6`
     </CardContainer>
   );
 }
-export default ServiceCard
+export default ServiceCard;
