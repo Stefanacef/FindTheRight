@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import LogoBrand from "../../components/logoBrand";
 import TopSectionContainerBackgroundImg from "../../images/landing-page-2.jpg";
-import {Marginer} from "../../components/marginer";
-import Button from "../../components/button"
+import { Marginer } from "../../components/marginer";
+import { deviceSize } from "../../components/responsive";
+import Button from "../../components/button";
+import { useMediaQuery } from "react-responsive";
 const TopSectionContainer = styled.div`
   width: 100%;
   height: 100vh;
@@ -12,9 +14,13 @@ const TopSectionContainer = styled.div`
       rgba(3, 78, 24, 0.596),
       rgba(2, 168, 49, 0.137)
     ),
-    url(${TopSectionContainerBackgroundImg});
+    url(${TopSectionContainerBackgroundImg}) no-repeat;
   background-position: 0px -50px;
   background-size: cover;
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    height: 70vh;
+    background-position: center;
+  }
 `;
 const TopSectionInnerContainer = styled.div`
   width: 100%;
@@ -22,6 +28,9 @@ const TopSectionInnerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    justify-content: center;
+  }
 `;
 const StandoutImg = styled.div`
   width: 40em;
@@ -36,6 +45,9 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    align-items: center;
+  }
 `;
 const SloganText = styled.h3`
   margin: 0;
@@ -44,25 +56,36 @@ const SloganText = styled.h3`
   font-weight: 400;
   font-size: 40px;
   letter-spacing: 0.5px;
+
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    font-size: 30px;
+  }
 `;
 
 const TopSection = (props) => {
-  const{children,textSlogan1, textSlogan2,image}=props
+  const { children, textSlogan1, textSlogan2, image } = props;
+  const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+  console.log("mobine", isMobile);
   return (
     <TopSectionContainer>
       {children}
       <TopSectionInnerContainer>
         <LogoContainer>
-          <LogoBrand logoSize={65} textSize={55}/>
-         <Marginer direction='vertical' margin={8}/>
+          <LogoBrand
+            logoSize={isMobile ? 30 : 65}
+            textSize={isMobile ? 35 : 55}
+          />
+          <Marginer direction="vertical" margin={8} />
           <SloganText> {textSlogan1} </SloganText>
           <SloganText> {textSlogan2}</SloganText>
-         <Marginer direction='vertical' margin={20}/>
+          <Marginer direction="vertical" margin={20} />
           <Button>Join Now</Button>
         </LogoContainer>
-        <StandoutImg>
-          <img src={image} alt="" />
-        </StandoutImg>
+        {!isMobile && (
+          <StandoutImg>
+            <img src={image} alt="" />
+          </StandoutImg>
+        )}
       </TopSectionInnerContainer>
     </TopSectionContainer>
   );

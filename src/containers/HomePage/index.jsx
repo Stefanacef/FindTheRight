@@ -13,10 +13,6 @@ import SpecialistAdd from "../../components/specialistAdd";
 import { Marginer } from "../../components/marginer";
 import Footer from "../../components/footer";
 
-const Title = styled.h1`
-  font-weight: 900;
-  color: #000;
-`;
 const ContentContainer = styled.div`
   width: 100%;
   max-width: ${deviceSize.laptop}px;

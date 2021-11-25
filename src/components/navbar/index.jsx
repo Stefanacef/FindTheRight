@@ -3,6 +3,8 @@ import styled from "styled-components";
 import LogoBrand from "../logoBrand";
 import Button from "../button";
 import { Marginer } from "../marginer";
+import { useMediaQuery } from "react-responsive";
+import { deviceSize } from "../../components/responsive";
 
 const NavBarContainer = styled.div`
   width: 100%;
@@ -13,6 +15,10 @@ const NavBarContainer = styled.div`
   padding: 0 2.1em;
   background-color: ${({ useTransparent }) =>
     useTransparent ? "none" : "rgba(5, 126, 39, 0.884)"};
+
+  /* @media screen and (max-width: ${deviceSize.mobile}px) {
+    justify-content: flex-start;
+  } */
 `;
 const AccessibilityContainer = styled.div`
   height: 100%;
@@ -39,13 +45,17 @@ const Separator = styled.div`
 
 function NavBar(props) {
   const { useTransparent } = props;
+  const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
   return (
     <NavBarContainer useTransparent={useTransparent}>
-      <LogoBrand logoSize={35} textSize={25}></LogoBrand>
+      <LogoBrand
+        logoSize={isMobile ? 25 : 35}
+        textSize={isMobile ? 17 : 25}
+      ></LogoBrand>
       <AccessibilityContainer>
-        <AnchorLink>Specialist Portal</AnchorLink>
-        <Marginer direction="horizontal" margin={10} />
-        <Separator />
+        {!isMobile && <AnchorLink>Specialist Portal</AnchorLink>}
+        {!isMobile && <Marginer direction="horizontal" margin={10} />}
+        {!isMobile && <Separator />}
         <Marginer direction="horizontal" margin={10} />
         <Button size={14} color="#00b43396">
           Register

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Marginer } from "../marginer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { deviceSize } from "../../components/responsive";
 
 const CardContainer = styled.div`
   display: flex;
@@ -12,8 +13,14 @@ const CardContainer = styled.div`
   min-height: 250px;
   background-color: #fff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-  margin-left: 4em;
+  margin-right: 4em;
   margin-bottom: 1.3em;
+  &:nth-child(3n + 3) {
+    margin-right: 0;
+  }
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    margin-right: 0em;
+  }
 `;
 
 const TopContainer = styled.div`
@@ -86,8 +93,7 @@ const StartingAtText = styled.h6`
 `;
 
 function ServiceCard(props) {
-  const { thumbnailUrl, specialist, id, title, rate, rating } = props;
-
+  const { thumbnailUrl, specialist, title, rate, rating } = props;
   return (
     <CardContainer>
       <TopContainer>

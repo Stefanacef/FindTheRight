@@ -4,6 +4,8 @@ import LogoBrand from "../logoBrand";
 import { Marginer } from "../marginer";
 import FarmingImage from "../../images/farming.png";
 import Button from "../button";
+import { deviceSize } from "../../components/responsive";
+import { useMediaQuery } from "react-responsive";
 const SpecialistAdContainer = styled.div`
   width: 100%;
   height: 500;
@@ -11,6 +13,9 @@ const SpecialistAdContainer = styled.div`
   background-color: #046b21c5;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    padding: 40px 0;
+  }
 `;
 const ContentContainer = styled.div`
   width: 100%;
@@ -23,13 +28,20 @@ const SloganContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-right: 3em;
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    align-items: center;
+    margin-right: 0em;
+  }
 `;
 const Slogan = styled.h2`
   margin: 0;
   font-size: 34px;
   color: #fff;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.3;
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    font-size: 35px;
+  }
 `;
 
 const StandoutImage = styled.div`
@@ -41,11 +53,16 @@ const StandoutImage = styled.div`
   }
 `;
 function SpecialistAdd() {
+  const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+
   return (
     <SpecialistAdContainer>
       <ContentContainer>
         <SloganContainer>
-          <LogoBrand logoSize={25} textSize={30} />
+          <LogoBrand
+            logoSize={isMobile ? 30 : 65}
+            textSize={isMobile ? 25 : 55}
+          />
           <Marginer direction="vertical" margin="1em" />
           <SloganContainer>
             <Slogan>You're Ready, and you</Slogan>
@@ -53,11 +70,13 @@ function SpecialistAdd() {
             <Slogan>Service to offer?</Slogan>
           </SloganContainer>
           <Marginer direction="vertical" margin={10} />
-          <Button size={15}>Join as Specialist</Button>
+          <Button size={isMobile ? 17 : 15}>Join as Specialist</Button>
         </SloganContainer>
-        <StandoutImage>
-          <img src={FarmingImage} alt="Join-as-specialist" />
-        </StandoutImage>
+        {!isMobile && (
+          <StandoutImage>
+            <img src={FarmingImage} alt="Join-as-specialist" />
+          </StandoutImage>
+        )}
       </ContentContainer>
     </SpecialistAdContainer>
   );

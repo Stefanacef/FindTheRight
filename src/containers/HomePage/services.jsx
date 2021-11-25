@@ -4,6 +4,8 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import ServiceCard from "../../components/serviceCard";
 import Button from "../../components/button";
+import { deviceSize } from "../../components/responsive";
+
 const ServicesContainer = styled.div`
   width: 100%;
   display: flex;
@@ -17,6 +19,10 @@ const Title = styled.h1`
   font-size: 2.5em;
   span {
     color: rgba(3, 78, 24, 0.637);
+  }
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    font-size: 2em;
+    margin-left: 0em;
   }
 `;
 const ServiceWrapper = styled.div`
@@ -45,7 +51,7 @@ const ViewButton = styled(Button)`
 function Services(props) {
   const [offeredServices, setServices] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const isServicesEmpty = !offeredServices || offeredServices.length == 0;
+  const isServicesEmpty = !offeredServices || offeredServices.length === 0;
 
   const fetchServices = async () => {
     setLoading(true);
