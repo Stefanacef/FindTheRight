@@ -13,7 +13,8 @@ const SpecialistAdContainer = styled.div`
   background-color: #046b21c5;
   align-items: center;
   justify-content: center;
-  @media screen and (min-width: ${deviceSize.mobileS}px) {
+  padding-left: 3em;
+  @media screen and (max-width: ${deviceSize.tablet}px) {
     padding: 40px 0 10px 0;
   }
 `;
@@ -22,7 +23,7 @@ const ContentContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media screen and (min-width: ${deviceSize.mobileS}px) {
+  @media screen and (max-width: ${deviceSize.tablet}px) {
     flex-direction: column;
   }
 `;
@@ -31,7 +32,7 @@ const SloganContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-right: 3em;
-  @media screen and (min-width: ${deviceSize.mobileS}px) {
+  @media screen and (max-width: ${deviceSize.tablet}px) {
     align-items: center;
     margin-right: 0em;
   }
@@ -42,11 +43,8 @@ const Slogan = styled.h2`
   color: #fff;
   font-weight: 500;
   line-height: 1.3;
-  @media screen and (min-width: ${deviceSize.mobileS}px) {
+  @media screen and (max-width: ${deviceSize.tablet}px) {
     font-size: 35px;
-  }
-  @media screen and (min-width: ${deviceSize.mobile}px) {
-    font-size: 45px;
   }
 `;
 
@@ -57,21 +55,26 @@ const StandoutImage = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media screen and (max-width: ${deviceSize.tablet}px) {
+    width: 25em;
+    height: 20em;
+  }
   @media screen and (max-width: ${deviceSize.mobile}px) {
     width: 20em;
     height: 17em;
   }
 `;
 function SpecialistAdd() {
-  const isMobile = useMediaQuery({ minWidth: deviceSize.mobileS });
+  const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+  const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
 
   return (
     <SpecialistAdContainer>
       <ContentContainer>
         <SloganContainer>
           <LogoBrand
-            logoSize={isMobile ? 30 : 65}
-            textSize={isMobile ? 25 : 55}
+            logoSize={isMobile ? 25 : isTablet ? 30 : 65}
+            textSize={isMobile ? 25 : isTablet ? 27 : 55}
           />
           <Marginer direction="vertical" margin="1em" />
           <SloganContainer>
@@ -80,7 +83,9 @@ function SpecialistAdd() {
             <Slogan>Service to offer?</Slogan>
           </SloganContainer>
           <Marginer direction="vertical" margin={10} />
-          <Button size={isMobile ? 20 : 15}>Join as Specialist</Button>
+          <Button size={isMobile ? 13 : isTablet ? 17 : 20}>
+            Join as Specialist
+          </Button>
         </SloganContainer>
 
         <StandoutImage>
