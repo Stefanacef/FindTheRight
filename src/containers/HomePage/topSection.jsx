@@ -15,7 +15,7 @@ const TopSectionContainer = styled.div`
       rgba(2, 168, 49, 0.137)
     ),
     url(${TopSectionContainerBackgroundImg}) no-repeat;
-  background-position: 0px -50px;
+  background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
   @media screen and (max-width: ${deviceSize.mobile}px) {
