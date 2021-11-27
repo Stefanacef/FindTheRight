@@ -13,14 +13,9 @@ const CardContainer = styled.div`
   min-height: 250px;
   background-color: #fff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-  margin-right: 4em;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 1.3em;
-  &:nth-child(3n + 3) {
-    margin-right: 0;
-  }
-  @media screen and (max-width: ${deviceSize.mobile}px) {
-    margin-right: 0em;
-  }
 `;
 
 const TopContainer = styled.div`

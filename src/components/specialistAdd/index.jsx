@@ -13,8 +13,8 @@ const SpecialistAdContainer = styled.div`
   background-color: #046b21c5;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: ${deviceSize.mobile}px) {
-    padding: 40px 0;
+  @media screen and (min-width: ${deviceSize.mobileS}px) {
+    padding: 40px 0 10px 0;
   }
 `;
 const ContentContainer = styled.div`
@@ -22,13 +22,16 @@ const ContentContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (min-width: ${deviceSize.mobileS}px) {
+    flex-direction: column;
+  }
 `;
 const SloganContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-right: 3em;
-  @media screen and (max-width: ${deviceSize.mobile}px) {
+  @media screen and (min-width: ${deviceSize.mobileS}px) {
     align-items: center;
     margin-right: 0em;
   }
@@ -39,8 +42,11 @@ const Slogan = styled.h2`
   color: #fff;
   font-weight: 500;
   line-height: 1.3;
-  @media screen and (max-width: ${deviceSize.mobile}px) {
+  @media screen and (min-width: ${deviceSize.mobileS}px) {
     font-size: 35px;
+  }
+  @media screen and (min-width: ${deviceSize.mobile}px) {
+    font-size: 45px;
   }
 `;
 
@@ -51,9 +57,13 @@ const StandoutImage = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    width: 20em;
+    height: 17em;
+  }
 `;
 function SpecialistAdd() {
-  const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+  const isMobile = useMediaQuery({ minWidth: deviceSize.mobileS });
 
   return (
     <SpecialistAdContainer>
@@ -70,13 +80,12 @@ function SpecialistAdd() {
             <Slogan>Service to offer?</Slogan>
           </SloganContainer>
           <Marginer direction="vertical" margin={10} />
-          <Button size={isMobile ? 17 : 15}>Join as Specialist</Button>
+          <Button size={isMobile ? 20 : 15}>Join as Specialist</Button>
         </SloganContainer>
-        {!isMobile && (
-          <StandoutImage>
-            <img src={FarmingImage} alt="Join-as-specialist" />
-          </StandoutImage>
-        )}
+
+        <StandoutImage>
+          <img src={FarmingImage} alt="Join-as-specialist" />
+        </StandoutImage>
       </ContentContainer>
     </SpecialistAdContainer>
   );

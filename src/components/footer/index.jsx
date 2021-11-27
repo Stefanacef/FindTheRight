@@ -3,6 +3,8 @@ import LogoBrand from "../logoBrand";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faTwitter } from "@fortawesome/fontawesome-free-brands";
+import { deviceSize } from "../../components/responsive";
+import { useMediaQuery } from "react-responsive";
 const FooterContainer = styled.div`
   width: 100%;
   min-height: 350px;
@@ -24,6 +26,9 @@ const ContentContainer = styled.div`
 
   &:not(:last-child) {
     margin-right: 2%;
+  }
+  @media screen and (max-width: ${deviceSize.mobile}px) {
+    align-items: center;
   }
 `;
 const BottomContainer = styled.div`

@@ -17,9 +17,9 @@ const TopSectionContainer = styled.div`
     url(${TopSectionContainerBackgroundImg}) no-repeat;
   background-position: 0px -50px;
   background-size: cover;
+  background-repeat: no-repeat;
   @media screen and (max-width: ${deviceSize.mobile}px) {
-    height: 70vh;
-    background-position: center;
+    height: 80vh;
   }
 `;
 const TopSectionInnerContainer = styled.div`
@@ -28,8 +28,9 @@ const TopSectionInnerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  @media screen and (max-width: ${deviceSize.mobile}px) {
-    justify-content: center;
+
+  @media screen and (max-width: ${deviceSize.tablet}px) {
+    flex-direction: column-reverse;
   }
 `;
 const StandoutImg = styled.div`
@@ -40,12 +41,21 @@ const StandoutImg = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media screen and (min-width: ${deviceSize.mobile}px) {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 const LogoContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   @media screen and (max-width: ${deviceSize.mobile}px) {
+    align-items: center;
+  }
+  @media screen and (min-width: ${deviceSize.mobile}px) {
     align-items: center;
   }
 `;
@@ -60,11 +70,16 @@ const SloganText = styled.h3`
   @media screen and (max-width: ${deviceSize.mobile}px) {
     font-size: 30px;
   }
+  @media screen and (min-width: ${deviceSize.mobile}px) {
+    font-size: 50px;
+  }
 `;
 
 const TopSection = (props) => {
   const { children, textSlogan1, textSlogan2, image } = props;
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+  const isLargePhone = useMediaQuery({ minWidth: deviceSize.mobile });
+
   console.log("mobine", isMobile);
   return (
     <TopSectionContainer>
@@ -79,7 +94,7 @@ const TopSection = (props) => {
           <SloganText> {textSlogan1} </SloganText>
           <SloganText> {textSlogan2}</SloganText>
           <Marginer direction="vertical" margin={20} />
-          <Button>Join Now</Button>
+          <Button size={isLargePhone ? 30 : null}>Join Now</Button>
         </LogoContainer>
         {!isMobile && (
           <StandoutImg>

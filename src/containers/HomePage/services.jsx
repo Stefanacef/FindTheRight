@@ -28,7 +28,8 @@ const Title = styled.h1`
 const ServiceWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 0 1em;
 `;
 const ButtonContainer = styled.div`
   width: 100%;
